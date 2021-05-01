@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const primaryBlue = '#300086';
+const secondaryPink = '#E56B6F';
 
 const Button = styled.button`
   border-radius: 2px;
@@ -14,10 +15,26 @@ const Button = styled.button`
 
 const PrimaryButton = styled(Button)`
   background-color: ${primaryBlue};
-  border: none;
   color: white;
-
+  border: 1px solid transparent;
 `
 
-export default PrimaryButton
+const SecondaryButton = styled(Button)`
+  background-color: ${secondaryPink};
+  border: 1px solid transparent;
+  color: white;
+`
+
+const TertiaryButton = styled(Button)`
+  border: 1px solid ${primaryBlue};
+  background-color: transparent;
+  color: ${primaryBlue};
+
+  &:hover {
+    background-color: ${primaryBlue};
+    color: white;
+  }
+`
+
+export { PrimaryButton, SecondaryButton, TertiaryButton }
 
