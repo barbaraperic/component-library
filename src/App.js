@@ -1,12 +1,13 @@
 import React from 'react';
-import { PrimaryButton, SecondaryButton, TertiaryButton } from './components/Buttons'
+import { PrimaryButton, SecondaryButton } from './components/Buttons'
+import { GlobalStyle } from "./utils"
 
 const App = () => {
   return (
     <div>
       <PrimaryButton>Hello World</PrimaryButton>
       <SecondaryButton>Hello World</SecondaryButton>
-      <TertiaryButton>Hello World</TertiaryButton>
+      <GlobalStyle />
     </div>
   )
 }
