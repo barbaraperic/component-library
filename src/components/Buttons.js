@@ -9,6 +9,30 @@ const BUTTON_MODIFIERS = {
   large: () => `
     fontSize: ${typeScale.header5};
     padding: 16px 24px;
+  `,
+  warning: () => `
+    background-color: ${defaultTheme.status.warningColor};
+    color: ${defaultTheme.textColorInverted};
+    
+    &:hover, &:focus {
+      background-color: ${defaultTheme.status.warningColorHover};
+      outline: 2px solid ${defaultTheme.status.warningColorHover};
+      outline-offset: 2px;
+    }
+    
+    &:active {
+      background-color: ${defaultTheme.status.warningColorActive};
+    }
+  `,
+  warningSecondary: () => `
+    background: none;
+    border: 2px solid ${defaultTheme.status.warningColor};
+    color: ${defaultTheme.status.warningColor};
+  `,
+
+  warningTertiary: () => `
+    background: none;
+    color: ${defaultTheme.status.warningColor};
   `
 }
 
