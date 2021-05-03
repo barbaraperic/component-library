@@ -24,15 +24,37 @@ const BUTTON_MODIFIERS = {
       background-color: ${defaultTheme.status.warningColorActive};
     }
   `,
+  success: () => `
+    background-color: ${defaultTheme.status.successColor};
+    color: ${defaultTheme.status.textColorInverted};
+
+    &:hover, &:focus {
+      background-color: ${defaultTheme.status.successColorHover};
+      outline: 2px solid ${defaultTheme.status.successColorHover};
+      outline-offset: 2px;
+    }
+
+    &:active {
+      background-color: ${defaultTheme.status.successColorActive};
+    }
+  `,
   warningSecondary: () => `
     background: none;
     border: 2px solid ${defaultTheme.status.warningColor};
     color: ${defaultTheme.status.warningColor};
   `,
-
+  successSecondary: () => `
+  background: none;
+  border: 2px solid ${defaultTheme.status.successColor};
+  color: ${defaultTheme.status.successColor};
+  `,
   warningTertiary: () => `
     background: none;
     color: ${defaultTheme.status.warningColor};
+  `,
+  successTertiary: () => `
+  background: none;
+  color: ${defaultTheme.status.successColor};
   `
 }
 
