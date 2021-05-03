@@ -38,6 +38,20 @@ const BUTTON_MODIFIERS = {
       background-color: ${defaultTheme.status.successColorActive};
     }
   `,
+  error: () => `
+  background-color: ${defaultTheme.status.errorColor};
+  color: ${defaultTheme.status.textColorInverted};
+
+  &:hover, &:focus {
+    background-color: ${defaultTheme.status.errorColorHover};
+    outline: 2px solid ${defaultTheme.status.errorColorHover};
+    outline-offset: 2px;
+  }
+
+  &:active {
+    background-color: ${defaultTheme.status.errorColorActive};
+  }
+`,
   warningSecondary: () => `
     background: none;
     border: 2px solid ${defaultTheme.status.warningColor};
@@ -48,6 +62,11 @@ const BUTTON_MODIFIERS = {
   border: 2px solid ${defaultTheme.status.successColor};
   color: ${defaultTheme.status.successColor};
   `,
+  errorSecondary: () => `
+  background: none;
+  border: 2px solid ${defaultTheme.status.errorColor};
+  color: ${defaultTheme.status.errorColor};
+  `,
   warningTertiary: () => `
     background: none;
     color: ${defaultTheme.status.warningColor};
@@ -55,6 +74,10 @@ const BUTTON_MODIFIERS = {
   successTertiary: () => `
   background: none;
   color: ${defaultTheme.status.successColor};
+  `,
+  errorTertiary: () => `
+  background: none;
+  color: ${defaultTheme.status.errorColor};
   `
 }
 
