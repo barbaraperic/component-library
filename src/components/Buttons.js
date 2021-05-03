@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { defaultTheme, typeScale } from "../utils";
 import { applyStyleModifiers } from "styled-components-modifiers";
+import { defaultTheme, typeScale } from "../utils";
 
-const BUTTON_MODIFIERS = {
+export const BUTTON_MODIFIERS = {
   small: () => `
     fontSize: ${typeScale.helperText};
   `,
@@ -16,6 +16,9 @@ const BUTTON_MODIFIERS = {
     
     &:hover, &:focus {
       background-color: ${defaultTheme.status.warningColorHover};
+    }
+
+    &:focus {
       outline: 2px solid ${defaultTheme.status.warningColorHover};
       outline-offset: 2px;
     }
@@ -30,6 +33,8 @@ const BUTTON_MODIFIERS = {
 
     &:hover, &:focus {
       background-color: ${defaultTheme.status.successColorHover};
+    }
+    &:focus {
       outline: 2px solid ${defaultTheme.status.successColorHover};
       outline-offset: 2px;
     }
@@ -44,10 +49,11 @@ const BUTTON_MODIFIERS = {
 
   &:hover, &:focus {
     background-color: ${defaultTheme.status.errorColorHover};
+  }
+  &:focus {
     outline: 2px solid ${defaultTheme.status.errorColorHover};
     outline-offset: 2px;
   }
-
   &:active {
     background-color: ${defaultTheme.status.errorColorActive};
   }
