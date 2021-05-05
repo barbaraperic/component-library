@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { applyStyleModifiers } from "styled-components-modifiers";
 import { typeScale } from "../utils";
 
-
 export const BUTTON_MODIFIERS = {
   small: () => `
     fontSize: ${typeScale.helperText};

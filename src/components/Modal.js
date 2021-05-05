@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSpring, animated }  from 'react-spring';
 import {typeScale} from "../utils";
 import {PrimaryButton} from "./Buttons";
 import {CloseIcon} from "../assets"
@@ -40,7 +41,12 @@ const CloseModalButton = styled.button`
   padding: 0;
 `
 
-const SignUpModal = () => {
+const SignUpModal = ({ showModal, setShowModal }) => {
+
+  const animation = useSpring({
+    opacity: showModal ? 1 : 0,
+    transform: showModal ? 'translateY(0)' : 'translateY(-200%)'
+  })
   return (
     <ModalWrapper>
       <SignUpHeader>Sign Up</SignUpHeader>

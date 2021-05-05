@@ -6,6 +6,7 @@ import SignUpModal from './components/Modal'
 
 const App = () => {
   const [useDarkTheme, setUseDarkTheme] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <ThemeProvider theme={useDarkTheme ? darkTheme : defaultTheme}>
@@ -22,7 +23,7 @@ const App = () => {
         <SecondaryButton modifiers={["large", "success", "successSecondary"]}>Hello World</SecondaryButton>
         <TertiaryButton modifiers={["large", "success", "successTertiary"]}>Goodby</TertiaryButton>
       </div> */}
-      <SignUpModal />
+      <SignUpModal showModal={showModal} setShowModal={setShowModal}/>
       <GlobalStyle />
     </ThemeProvider>
   )
