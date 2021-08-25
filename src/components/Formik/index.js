@@ -3,10 +3,6 @@ import styled from "styled-components";
 import { Formik, Form, Field } from "formik";
 import * as yup from "yup";
 
-import { FormikInput, FormikTextArea, Button } from "../../components";
-import { Section, Modal } from "../../containers";
-import SharingPreferences from "./SharingPreferences";
-
 const validationSchema = yup.object({
   name_sharing: yup.array(),
   name: yup.string().when("name_sharing", {
@@ -20,7 +16,7 @@ const handleSubmit = (data) => {};
 const Questionnaire = () => {
   const [showModal, setShowModal] = useState(false);
   return (
-    <StyledSection title="Feedback questions">
+    <div title="Feedback questions">
       <Formik
         initialValues={{
           name: "",
@@ -39,30 +35,30 @@ const Questionnaire = () => {
       >
         {({ values, errors, touched }) => (
           <Form>
-            <FormikInput
+            <input
               placeholder="Name and surname (optional)"
               size="large"
               name="name"
             />
-            <FormikTextArea
+            <input
               name="question1"
               placeholder="Your answer"
               label="What did you learn from our interaction"
               size="large"
             />
-            <FormikTextArea
+            <input
               name="question2"
               placeholder="Your answer"
               label=" How efficiently was our time spent together? Was there anything I could have done to avoid wasting our time?"
               size="large"
             />
-            <FormikTextArea
+            <input
               name="question3"
               placeholder="Your answer"
               label=" What questions did I not ask but should have?"
               size="large"
             />
-            <StyledSection title="Feedback sharing preferences">
+            <div title="Feedback sharing preferences">
               <Wrapper role="group" aria-labelledby="checkbox-group">
                 <RadioInputRequired>
                   <label>
@@ -86,45 +82,35 @@ const Questionnaire = () => {
                   </label>
                 </RadioInput>
               </Wrapper>
-            </StyledSection>
-            <Button
+            </div>
+            <button
               type="submit"
               variant="primary"
               size="medium"
               // disabled={data.startDate === "" || data.endDate === ""}
             >
               Next
-            </Button>
+            </button>
           </Form>
         )}
       </Formik>
-      <Modal
+      <div
         // title="Your preferences"
         isOpen={showModal}
         handleDismiss={() => setShowModal(false)}
       >
-        <SharingPreferences preference="partly anonymous" />
-        <StyledButton
+        <button
           type="submit"
           variant="primary"
           size="medium"
           // disabled={data.startDate === "" || data.endDate === ""}
         >
           Send feedback
-        </StyledButton>
-      </Modal>
-    </StyledSection>
+        </button>
+      </div>
+    </div>
   );
 };
-
-const StyledSection = styled(Section)`
-  text-align: left;
-`;
-
-const StyledButton = styled(Button)`
-  margin: 0 auto;
-  display: block;
-`;
 
 const Wrapper = styled.div`
   display: flex;
