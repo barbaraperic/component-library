@@ -1,32 +1,20 @@
-import React from 'react';
-import styled from 'styled-components';
+import styled from "styled-components";
+import { COLORS } from "../../styles";
 
-import { COLORS } from '../../constants';
-import VisuallyHidden from '../VisuallyHidden';
-
-const STYLES = {
-  small: {
-    height: 8,
-    padding: 0,
-    radius: 4,
+const STATUS = {
+  progress: {
+    backgroundColor: `${COLORS.secondary}`,
   },
-  medium: {
-    height: 12,
-    padding: 0,
-    radius: 4,
-  },
-  large: {
-    height: 16,
-    padding: 4,
-    radius: 8,
+  finished: {
+    backgroundColor: "#2C8F72",
   },
 };
 
-const ProgressBar = ({ value, size }) => {
-  const styles = STYLES[size];
+export const ProgressBar = ({ value, status, max }) => {
+  const styles = STATUS[status];
 
   if (!styles) {
-    throw new Error(`Unknown size passed to ProgressBar: ${size}`);
+    throw new Error(`Unknown size passed to ProgressBar: ${status}`);
   }
 
   return (
@@ -34,18 +22,14 @@ const ProgressBar = ({ value, size }) => {
       role="progressbar"
       aria-valuenow={value}
       aria-valuemin="0"
-      aria-valuemax="100"
-      style={{
-        '--padding': styles.padding + 'px',
-        '--radius': styles.radius + 'px',
-      }}
+      aria-valuemax={max}
     >
       <VisuallyHidden>{value}%</VisuallyHidden>
       <BarWrapper>
         <Bar
           style={{
-            '--width': value + '%',
-            '--height': styles.height + 'px',
+            "--width": (value / max) * 100 + "%",
+            "--background-color": styles.backgroundColor,
           }}
         />
       </BarWrapper>
@@ -53,11 +37,22 @@ const ProgressBar = ({ value, size }) => {
   );
 };
 
+const VisuallyHidden = styled.div`
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+`;
+
 const Wrapper = styled.div`
-  background-color: ${COLORS.transparentGray15};
-  box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
-  border-radius: var(--radius);
-  padding: var(--padding);
+  background-color: ${COLORS.white};
+  box-shadow: inset 0px 2px 4px ${COLORS.primary};
+  border-radius: 8px;
+  padding: 4px;
 `;
 
 const BarWrapper = styled.div`
@@ -68,9 +63,7 @@ const BarWrapper = styled.div`
 
 const Bar = styled.div`
   width: var(--width);
-  height: var(--height);
-  background-color: ${COLORS.primary};
+  height: 16px;
+  background-color: var(--background-color);
   border-radius: 4px 0 0 4px;
 `;
-
-export default ProgressBar;
